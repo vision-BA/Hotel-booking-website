@@ -24,12 +24,4 @@ A responsive hotel booking website where users can view rooms, make bookings, br
 2. Open Dashboard.html in your browser.
 3. Explore other pages: Booking, Rooms, Gallery, Profile.
 
-## Screenshots
-(Add screenshots of your site here)
 
-## License
-(Mention your license, e.g., MIT)
-
----
-
-You can customize these sections to fit your project.
