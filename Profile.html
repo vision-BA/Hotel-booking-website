@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <nav>
+<h2>Trillionex</h2>  
+<ul>
+  <li><a href="Dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+  <li><a href="Booking.html"><i class="fa-solid fa-calendar-check"></i> Booking</a></li>
+  <li><a href="Rooms.html"><i class="fa-solid fa-bed"></i> Rooms</a></li>
+  <li><a href="Gallery.html"><i class="fa-solid fa-image"></i> Gallery</a></li>
+  <li><a href="Profile.html"><i class="fa-solid fa-user"></i> Profile</a></li>
+</ul>
+    </nav>
+    <div class="profile-container">
+        <h1>User Profile</h1>
+  <div class="profile-header">
+    <div>
+      <h2 id="userName">bright Athuman</h2>
+      <p id="userEmail">Brightathuman0@gmail.com</p>
+    </div>
+  </div>
+
+  <div class="profile-info">
+    <h3>Edit Profile</h3>
+    <input type="text" id="editName" placeholder="Name">
+    <input type="email" id="editEmail" placeholder="Email">
+    <input type="password" id="editPassword" placeholder="Password">
+    <input type="file" id="editPic">
+    <button id="saveProfile">Save Changes</button>
+  </div>
+  <div class="booking-history">
+    <h3>Booking History</h3>
+    <div id="bookingList">
+      <!-- Booking items will appear here -->
+    </div>
+  </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>

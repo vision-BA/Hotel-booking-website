@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav>
+<h2>Trillionex</h2>  
+<ul>
+    <li><a href="Dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+    <li><a href="Booking.html"><i class="fa-solid fa-calendar-check"></i> Booking</a></li>
+    <li><a href="Rooms.html"><i class="fa-solid fa-bed"></i> Rooms</a></li>
+    <li><a href="Gallery.html"><i class="fa-solid fa-image"></i> Gallery</a></li>
+    <li><a href="Profile.html"><i class="fa-solid fa-user"></i> Profile</a></li>
+</ul>
+    </nav>
+    <!--container for all three sections-->
+<div class="container">
+     <div class="header">
+        <h2>Dashboard</h2>
+        <img src="download.jpeg" alt="user" width="50px" height="50px">
+    </div>
+    <div class="dashboard-sections">
+        <div class="Total-Booking">
+            <h3>Total Bookings</h3>
+            <p>We are absolutely delighted to have you here. Trillionex is your gateway to comfort, elegance, and memorable experiences. With just a few clicks, you can explore our wide selection of luxurious rooms, book your perfect stay, and enjoy exclusive offers designed just for you.
+           Whether you’re traveling for leisure, business, or a special occasion, we are here to ensure every detail of your booking is smooth and stress-free. 
+         Thank you for choosing Trillionex. Your journey to exceptional hospitality, relaxation, and world-class service starts right here. Sit back, book with ease, and let us take care of the rest.</p>
+        </div>
+        <div class="Quick-Booking">
+            <h3>QuickBooking</h3>
+            <label for="date">Check-In date</label> <br>
+            <input type="date" name="date" id="Check-in" required> <br>
+            <label for="date">Check-Out date</label> <br>
+            <input type="date" name="date" id="Check-Out" required> <br>
+            <button id="booking" onclick="bookingNow()">Book Now</button>
+            <div class="welcome-message" id="welcomeMessage">Welcome to Trillionex Hotel! Your booking is our pleasure.</div>
+        </div>
+    </div>
+    <div class="booking-graph">
+            <h4>Users Registered Per Day</h4>
+            <canvas id="userPerDayChart" width="400" height="200"></canvas>
+        </div>
+</div>
+<script src="script.js"></script>
+
+
+</body>
+</html>
+<!--maketotal postion fixed for nav and make sure no changes  in style of other elements of all pages-->
