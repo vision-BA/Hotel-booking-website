@@ -10,47 +10,82 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <nav>
-<h2>Trillionex</h2>  
+
+    <section id="header">
+        <nav>  
 <ul>
-    <li><a href="Dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
-    <li><a href="Booking.html"><i class="fa-solid fa-calendar-check"></i> Booking</a></li>
-    <li><a href="Rooms.html"><i class="fa-solid fa-bed"></i> Rooms</a></li>
-    <li><a href="Gallery.html"><i class="fa-solid fa-image"></i> Gallery</a></li>
-    <li><a href="Profile.html"><i class="fa-solid fa-user"></i> Profile</a></li>
+    <!-- <li><a href="#Trillionex">Trillionex</a></li> -->
+    <li><a href="#"> Dashboard</a></li>
+      <li><a href="Gallery"> Gallery</a></li>
+       <li><a href="Rooms"> Rooms</a></li>
+    <li><a href="Contacts"> Contacts</a></li> 
+    <li><a href="About">About</a></li>
 </ul>
-    </nav>
-    <!--container for all three sections-->
-<div class="container">
-     <div class="header">
-        <h2>Dashboard</h2>
-        <img src="download.jpeg" alt="user" width="50px" height="50px">
-    </div>
-    <div class="dashboard-sections">
-        <div class="Total-Booking">
-            <h3>Total Bookings</h3>
-            <p>We are absolutely delighted to have you here. Trillionex is your gateway to comfort, elegance, and memorable experiences. With just a few clicks, you can explore our wide selection of luxurious rooms, book your perfect stay, and enjoy exclusive offers designed just for you.
-           Whether you’re traveling for leisure, business, or a special occasion, we are here to ensure every detail of your booking is smooth and stress-free. 
-         Thank you for choosing Trillionex. Your journey to exceptional hospitality, relaxation, and world-class service starts right here. Sit back, book with ease, and let us take care of the rest.</p>
-        </div>
-        <div class="Quick-Booking">
-            <h3>QuickBooking</h3>
-            <label for="date">Check-In date</label> <br>
-            <input type="date" name="date" id="Check-in" required> <br>
-            <label for="date">Check-Out date</label> <br>
-            <input type="date" name="date" id="Check-Out" required> <br>
-            <button id="booking" onclick="bookingNow()">Book Now</button>
-            <div class="welcome-message" id="welcomeMessage">Welcome to Trillionex Hotel! Your booking is our pleasure.</div>
-        </div>
-    </div>
-    <div class="booking-graph">
-            <h4>Users Registered Per Day</h4>
-            <canvas id="userPerDayChart" width="400" height="200"></canvas>
-        </div>
-</div>
+</nav>
+<form action="">
+    <input type="text" name="userName" id="userName" placeholder="Enter your userName"> &nbsp;
+    <input type="text" name="passWord" id="passWord"placeholder="Enter your password">
+    <button type="submit" id="login">Login</button>
+    <button type="submit" id="register">Register</button>
+</form>
+    </section>
+
+    <section id="welcome">
+        <input type="search" id="searchRooms" placeholder="Experience best hospitality here ">
+    </section>
+
+    <section id="cards">
+         <div id="Gallery-card">
+           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque inventore earum quod. Doloribus eum quasi quo nostrum, iusto ipsa quibusdam illo qui provident! Ipsa natus corrupti at eligendi qui inventore?
+           Accusamus possimus nemo aliquam repudiandae, blanditiis iste quam magnam fugit reiciendis. Tenetur officiis quidem voluptate facere nemo molestias hic cum ea praesentium qui ipsam, mollitia accusantium iste fuga nulla voluptates?
+           Eveniet blanditiis quas vitae est inventore quo illum harum porro! A, facilis. Velit nostrum quisquam soluta earum saepe amet vitae voluptatibus fugit atque aut? Voluptatem enim earum nobis porro praesentium!</p>
+           <button>View Gallery &raquo;</button>
+         </div>
+         <div id="Rooms-card">
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque inventore earum quod. Doloribus eum quasi quo nostrum, iusto ipsa quibusdam illo qui provident! Ipsa natus corrupti at eligendi qui inventore?
+           Accusamus possimus nemo aliquam repudiandae, blanditiis iste quam magnam fugit reiciendis. Tenetur officiis quidem voluptate facere nemo molestias hic cum ea praesentium qui ipsam, mollitia accusantium iste fuga nulla voluptates?
+           Eveniet blanditiis quas vitae est inventore quo illum harum porro! A, facilis. Velit nostrum quisquam soluta earum saepe amet vitae voluptatibus fugit atque aut? Voluptatem enim earum nobis porro praesentium!</p>
+           <button>Book Rooms &raquo;</button>
+         </div>
+    </section>
+
+<section id="Gallery">
+        <figure class="images">
+            <img src="./deluxe room 2.jpeg" alt="Deluxe Room 2" >
+            <figcaption>Deluxe Room 2</figcaption>
+        </figure>
+        <figure class="images">
+            <img src="./deluxe room.jpeg" alt="Deluxe Room">
+            <figcaption>Deluxe Room</figcaption>
+        </figure>
+        <figure class="images">
+            <img src="./double room.jpeg" alt="Double Room">
+            <figcaption>Double Room</figcaption>
+        </figure>
+        <figure class="images">
+            <img src="./family room 4.jpeg" alt="Family Room 4">
+            <figcaption>Family Room 4</figcaption>
+        </figure>
+        <figure class="images">
+            <img src="./family room 5.jpeg" alt="Family Room">
+            <figcaption>Family Room</figcaption>
+        </figure>
+        <figure class="images">
+            <img src="./deluxe room 7.jpeg" alt="Single Room">
+            <figcaption>Single Room</figcaption>
+        </figure>
+         <figure class="images">
+            <img src="./Trillionex Hotel Room.jpeg" alt="Single Room">
+            <figcaption>Single Room</figcaption>
+        </figure>
+         <figure class="images">
+            <img src="./single rooms.jpeg" alt="Single Room">
+            <figcaption>Single Room</figcaption>
+        </figure>
+</section>
+
+
 <script src="script.js"></script>
-
-
 </body>
 </html>
 <!--maketotal postion fixed for nav and make sure no changes  in style of other elements of all pages-->
