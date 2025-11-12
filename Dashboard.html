@@ -11,24 +11,35 @@
 </head>
 <body>
 
-    <section id="header">
-        <nav>  
-<ul>
-    <!-- <li><a href="#Trillionex">Trillionex</a></li> -->
-    <li><a href="#"> Dashboard</a></li>
-      <li><a href="Gallery"> Gallery</a></li>
-       <li><a href="Rooms"> Rooms</a></li>
-    <li><a href="Contacts"> Contacts</a></li> 
-    <li><a href="About">About</a></li>
-</ul>
-</nav>
-<form action="">
-    <input type="text" name="userName" id="userName" placeholder="Enter your userName"> &nbsp;
-    <input type="text" name="passWord" id="passWord"placeholder="Enter your password">
-    <button type="submit" id="login">Login</button>
-    <button type="submit" id="register">Register</button>
-</form>
-    </section>
+    <header class="page-header">
+        <div class="horizontal-nav">
+            <div class="brand">
+                <a href="Dashboard.html" class="brand-link">
+                    <!-- optional logo: drop-in `logo.png` in project root to show image -->
+                    <img src="./logo.png" alt="Hotel logo" class="brand-logo" onerror="this.style.display='none'"> Trillionex
+                </a>
+            </div>
+
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <nav class="nav-links" aria-label="Main navigation">
+                <ul>
+                    <li><a href="Dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#Gallery">Gallery</a></li>
+                    <li><a href="#Rooms">Rooms</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <input type="search" id="searchTop" placeholder="Search rooms, offers...">
+                <a href="#" class="btn login">Login</a>
+                <a href="#" class="btn register">Register</a>
+            </div>
+        </div>
+    </header>
 
     <section id="welcome">
         <input type="search" id="searchRooms" placeholder="Experience best hospitality here ">

@@ -207,6 +207,60 @@ body{
      width: 100vw;
      height: 100vh;
 }
+/* Horizontal top navigation styles (new) */
+.page-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1200;
+}
+.horizontal-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: linear-gradient(90deg,#1b2b65,#23408f);
+    color: #fff;
+    padding: 10px 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.brand-link{
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+}
+.brand-logo{
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.nav-links ul{display:flex;gap:8px;list-style:none;margin:0;padding:0}
+.nav-links a{color: #e9f0ff;text-decoration:none;padding:8px 12px;border-radius:8px;display:inline-block}
+.nav-links a:hover,.nav-links a.active{background: rgba(255,165,0,0.12);color:#fff}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.nav-actions input[type=search]{padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.03);color:#fff}
+.nav-actions .btn{padding:8px 12px;border-radius:8px;text-decoration:none;color:#1b2b65;background:#fff;font-weight:600}
+.nav-actions .btn.login{background:#ffe6b3}
+.nav-actions .btn.register{background:#ffd08a}
+.nav-toggle{display:none;background:transparent;border:0;color:#fff;font-size:1.25rem;padding:6px}
+
+/* push main content down so header doesn't cover it */
+main, #welcome, #cards, section {padding-top:68px}
+
+/* Header-specific override: prevent legacy `nav` rules (sidebar) from affecting the top nav */
+header, header .horizontal-nav, header nav, header .nav-links {
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+}
+header .nav-links { display: flex !important; }
+header .nav-links ul { flex-direction: row !important; gap: 10px; }
+header .nav-links.open { position: absolute; top:56px; left:12px; right:12px; }
 nav {
     color: #ffffff;
     background-color:#1b2b65;
@@ -225,6 +279,9 @@ nav h4{
 }
 nav ul{
     display: flex;
+
+    /* on medium screens, convert original sidebar nav into top horizontal if present */
+    .page-header .nav-links ul{flex-wrap:wrap;justify-content:center}
     flex-direction: column;
     margin-top: 20px;
 }
@@ -818,4 +875,13 @@ height: fit-content;
 .Room-container .room-card .room-book-btn:hover{
     background-color: #ffa500;
     color: #1b2b65;
+}
+
+/* small screens: show hamburger, hide full nav */
+@media (max-width: 820px) {
+    .nav-toggle{display:inline-block}
+    .nav-links{display:none}
+    .nav-links.open{display:block;position:absolute;left:12px;right:12px;top:56px;background:#1b2b65;border-radius:8px;padding:8px}
+    .nav-links.open ul{flex-direction:column}
+    .nav-actions input[type=search]{display:none}
 }
