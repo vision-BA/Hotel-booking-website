@@ -3,100 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome CDN -->
+    <title>Document</title>
+    <!--links for external dependencies-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--links fr external css file-->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!--This is header-1section with navigation bar horizontally-->
 
-    <header class="page-header">
-        <div class="horizontal-nav">
-            <div class="brand">
-                <a href="Dashboard.html" class="brand-link">
-                    <!-- optional logo: drop-in `logo.png` in project root to show image -->
-                    <img src="./logo.png" alt="Hotel logo" class="brand-logo" onerror="this.style.display='none'"> Trillionex
-                </a>
-            </div>
+   <header id="header1">
+    <nav>
+    <ul>
+        <li><a href="#Home"></a>Home</li>
+        <li><a href="#Rooms"></a>Rooms</li>
+        <li><a href="#Testmonials"></a>Testmonials</li>
+        <li><a href="#About"></a>About</li>
+    </ul>
+    <!--search box for rooms or image-->
+    <input type="search" name="search" id="search" placeholder="Search for rooms here ">
+    <!-- <i class="fa fa-search"></i> -->
+    </nav>
+   </header> 
 
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <i class="fa fa-bars"></i>
-            </button>
-
-            <nav class="nav-links" aria-label="Main navigation">
-                <ul>
-                    <li><a href="Dashboard.html" class="active">Dashboard</a></li>
-                    <li><a href="About.html">About</a></li>
-                    <li><a href="#Gallery">Gallery</a></li>
-                    <li><a href="#Rooms">Rooms</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-actions">
-                <input type="search" id="searchTop" placeholder="Search rooms, offers...">
-                <a href="#" class="btn login">Login</a>
-                <a href="#" class="btn register">Register</a>
-            </div>
-        </div>
-    </header>
-
-    <section id="welcome">
-        <input type="search" id="searchRooms" placeholder="Experience best hospitality here ">
-    </section>
-
-    <section id="cards">
-         <div id="Gallery-card">
-           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque inventore earum quod. Doloribus eum quasi quo nostrum, iusto ipsa quibusdam illo qui provident! Ipsa natus corrupti at eligendi qui inventore?
-           Accusamus possimus nemo aliquam repudiandae, blanditiis iste quam magnam fugit reiciendis. Tenetur officiis quidem voluptate facere nemo molestias hic cum ea praesentium qui ipsam, mollitia accusantium iste fuga nulla voluptates?
-           Eveniet blanditiis quas vitae est inventore quo illum harum porro! A, facilis. Velit nostrum quisquam soluta earum saepe amet vitae voluptatibus fugit atque aut? Voluptatem enim earum nobis porro praesentium!</p>
-           <button>View Gallery &raquo;</button>
-         </div>
-         <div id="Rooms-card">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque inventore earum quod. Doloribus eum quasi quo nostrum, iusto ipsa quibusdam illo qui provident! Ipsa natus corrupti at eligendi qui inventore?
-           Accusamus possimus nemo aliquam repudiandae, blanditiis iste quam magnam fugit reiciendis. Tenetur officiis quidem voluptate facere nemo molestias hic cum ea praesentium qui ipsam, mollitia accusantium iste fuga nulla voluptates?
-           Eveniet blanditiis quas vitae est inventore quo illum harum porro! A, facilis. Velit nostrum quisquam soluta earum saepe amet vitae voluptatibus fugit atque aut? Voluptatem enim earum nobis porro praesentium!</p>
-           <button>Book Rooms &raquo;</button>
-         </div>
-    </section>
-
-<section id="Gallery">
-        <figure class="images">
-            <img src="./deluxe room 2.jpeg" alt="Deluxe Room 2" >
-            <figcaption>Deluxe Room 2</figcaption>
-        </figure>
-        <figure class="images">
-            <img src="./deluxe room.jpeg" alt="Deluxe Room">
-            <figcaption>Deluxe Room</figcaption>
-        </figure>
-        <figure class="images">
-            <img src="./double room.jpeg" alt="Double Room">
-            <figcaption>Double Room</figcaption>
-        </figure>
-        <figure class="images">
-            <img src="./family room 4.jpeg" alt="Family Room 4">
-            <figcaption>Family Room 4</figcaption>
-        </figure>
-        <figure class="images">
-            <img src="./family room 5.jpeg" alt="Family Room">
-            <figcaption>Family Room</figcaption>
-        </figure>
-        <figure class="images">
-            <img src="./deluxe room 7.jpeg" alt="Single Room">
-            <figcaption>Single Room</figcaption>
-        </figure>
-         <figure class="images">
-            <img src="./Trillionex Hotel Room.jpeg" alt="Single Room">
-            <figcaption>Single Room</figcaption>
-        </figure>
-         <figure class="images">
-            <img src="./single rooms.jpeg" alt="Single Room">
-            <figcaption>Single Room</figcaption>
-        </figure>
-</section>
-
-
-<script src="script.js"></script>
 </body>
 </html>
-<!--maketotal postion fixed for nav and make sure no changes  in style of other elements of all pages-->
