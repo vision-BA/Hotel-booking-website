@@ -29,12 +29,15 @@ body{
 }
  #header1 nav ul li a{
     padding: 20px;
+    text-decoration: none;
     cursor: pointer;
+    color: #fff;
     width: 100%;
 }
 
  #header1 nav ul li a:hover{
     background-color:#555555;
+    border-radius: 10px;
  }
 #header1 input[type=search] {
   float: right;
@@ -47,6 +50,10 @@ body{
   border: none;
   cursor: pointer;
   height: 40px;
+}
+#header1 input[type=search]:focus{
+  outline: none;
+  background-color: #666765;
 }
 /*small devices responsiveness */
 @media screen and (max-width: 600px){
@@ -103,3 +110,7 @@ body{
 #welcome .view #Login:hover{
     background-color:#ff0000;
 }
+
+
+
+/*styling modal sign up form */
