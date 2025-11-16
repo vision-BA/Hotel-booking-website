@@ -1,0 +1,13 @@
+
+function closeModal(){
+  return document.getElementById("signUp").style.display="none";
+}
+  document.getElementById("myBtn").addEventListener("click",closeModal() );
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}

@@ -41,21 +41,40 @@ body{
     background-color:#555555;
     border-radius: 10px;
  }
-#header1 input[type=search] {
+#header1 .search-container {
+  position: relative;
   float: right;
-  padding: 8px;
   margin-top: 15px;
   margin-bottom: 15px;
   margin-right: 20px;
+}
+
+#header1 input[type=search] {
+  padding: 8px 40px 8px 12px;
   background: #ddd;
   font-size: 17px;
   border: none;
   cursor: pointer;
   height: 40px;
+  width: 250px;
 }
+
+#header1 .search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  pointer-events: none;
+}
+
 #header1 input[type=search]:focus{
   outline: none;
-  background-color: #666765;
+  background-color: #8b8b8b;
+}
+
+#header1 input[type=search]:focus + .search-icon {
+  color: #fff;
 }
 /*small devices responsiveness */
 @media screen and (max-width: 600px){
@@ -88,12 +107,25 @@ body{
         width: 100%;
     }
     
-    #header1 input[type=search]{
+    #header1 .search-container{
         float: none;
         width: 100%;
         margin: 10px 0 0 0;
+    }
+    
+    #header1 input[type=search]{
+        width: 100%;
         box-sizing: border-box;
     }
+
+  section.homepage{
+  background-image: url("./deluxe\ room.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 30vh;
+}
 }
 
 /* styling the homepage section with background image and button inside */
@@ -103,5 +135,100 @@ section.homepage{
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 50vh;
+  height: 70vh;
+}
+section #signUp{
+background-color: #4CAF50;
+color: #ddd;
+border: none;
+width: 100px;
+padding: 12px;
+position: relative;
+top: 50%;
+left: 50%;
+right: 50%;
+
+}
+
+form .container{
+  
+  width: 25%;
+  height: fit-content;
+  margin: auto;
+  background-color: #ddd;
+
+}
+/* Full-width input fields */
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 10px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+form .container button{
+  display: flex;
+  justify-content: space-around;
+}
+/* Set a style for all buttons */
+button.signupbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px ;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+
+
+/* Extra styles for the cancel button */
+button.cancelbtn {
+  background-color:#ff0000;
+   color: white;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+}
+button.signupbtn:hover,button.cancelbtn:hover {
+  opacity:1;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+button.cancelbtn, button.signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
 }
