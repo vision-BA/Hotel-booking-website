@@ -291,3 +291,23 @@ section#Rooms img{
 #roomCards .bookRoom .roomDescr #booking:hover{
   background-color: #f4d826;
 }
+
+section#Testmonials{
+  margin: 60px 80px; 
+  
+}
+section#Testmonials #testmonialsContainer{
+  display: flex;
+}
+
+section#Testmonials #testmonialsContainer .container{
+  display: inline-block;
+  margin: 20px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+section#Testmonials #testmonialsContainer .container img{
+  border-radius: 50%;
+  width: 150px;
+}
