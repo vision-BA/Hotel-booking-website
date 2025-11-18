@@ -137,17 +137,29 @@ section.homepage{
   width: 100%;
   height: 70vh;
 }
-section #signUp{
+section span.close{
+  font-size: 2.5rem;
+   margin:auto 70% ;
+   color: #f1f1f1;
+   cursor: pointer;
+
+}
+section #signUp,section #login{
 background-color: #4CAF50;
 color: #ddd;
 border: none;
-width: 100px;
+width: 200px;;
 padding: 12px;
+margin: 12px;
 position: relative;
 top: 50%;
 left: 50%;
 right: 50%;
-
+cursor: pointer;
+transform: translateX(-140%);
+}
+section #signUp:hover,section #login:hover{
+  background-color: #120be2;
 }
 
 form .container{
@@ -174,15 +186,16 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 hr {
-  border: 1px solid #f1f1f1;
+  border: 1px solid #4CAF50;
   margin-bottom: 25px;
+  margin-top: 25px;
 }
 form .container button{
   display: flex;
   justify-content: space-around;
 }
 /* Set a style for all buttons */
-button.signupbtn {
+button.signupbtn,button.Login {
   background-color: #4CAF50;
   color: white;
   padding: 12px ;
@@ -196,7 +209,7 @@ button.signupbtn {
 
 /* Extra styles for the cancel button */
 button.cancelbtn {
-  background-color:#ff0000;
+  background-color:#120be2;
    color: white;
   padding: 12px;
   margin: 8px 0;
@@ -204,12 +217,12 @@ button.cancelbtn {
   cursor: pointer;
   opacity: 0.9;
 }
-button.signupbtn:hover,button.cancelbtn:hover {
+button.signupbtn:hover,button.cancelbtn:hover,button.Login:hover {
   opacity:1;
 }
 
 /* Float cancel and signup buttons and add an equal width */
-button.cancelbtn, button.signupbtn {
+button.cancelbtn, button.signupbtn,button.Login {
   float: left;
   width: 50%;
 }
@@ -226,9 +239,55 @@ button.cancelbtn, button.signupbtn {
   display: table;
 }
 
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-    width: 100%;
-  }
+section#Rooms{
+margin: 40px 60px;
+
+}
+section#Rooms #roomCards{
+display:inline-block;
+margin: 20px auto;
+}
+section#Rooms  .bookRoom{
+  display:flex;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);    
+  margin:12px auto;
+  padding: 20px;
+}
+section#Rooms img{
+  max-width: 400px;
+  height:fit-content;
+  object-fit: contain;
+  padding: 12px;
+}
+ .bookRoom .roomDescr{
+  margin: 10px 20px ;
+  padding: 12px;
+}
+ .bookRoom .roomDescr h1{
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+ .bookRoom .roomDescr h2{
+  margin: 10px auto;
+  padding: 12px;
+}
+ .bookRoom .roomDescr p{
+    margin: 10px auto;
+    padding: 12px;
+}
+ #roomCards .bookRoom .roomDescr #booking {
+  position: absolute;
+  bottom: 0;
+  right: 100px;
+  transform: translateY(250px);
+  background-color: #4CAF50;
+  color: #f1f1f1;
+  padding: 12px;
+  width: 200px;
+  border: none;
+  cursor: pointer;
+}
+#roomCards .bookRoom .roomDescr #booking:hover{
+  background-color: #f4d826;
 }

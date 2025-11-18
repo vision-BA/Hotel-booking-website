@@ -24,14 +24,16 @@
     <div class="search-container">
         <input type="search" name="search" id="search" placeholder="Search for rooms here ">
         <i class="fa fa-search search-icon"></i>
+
     </div>
     </nav>
    </header> 
 
 <section class="homepage">
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" id="signUp">Sign Up</button>
+ 
+<button onclick="document.getElementById('id01').style.display='block'"  id="signUp">Sign Up</button>
 
-<div id="id01" class="modal">
+<div id="id01" class="modal" style="display: none;">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form class="modal-content" action="https://www.w3schools.com/action_page.php">
     <div class="container">
@@ -59,7 +61,91 @@
     </div>
   </form>
 </div>
-</section>
+<button onclick="document.getElementById('id02').style.display='block'" id="login">Login</button>
+
+<div id="id02" class="modal" style="display: none;">
+  
+  <form class="modal-content animate" action="https://www.w3schools.com/action_page.php" method="post">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
    
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      <button type="submit" class="Login">Login</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+</section>
+
+<hr>
+
+<section id="Rooms">
+<div id="roomCards">
+<div class="bookRoom">
+  <img  src="./deluxe room 2.jpeg" alt="deluxe room" >
+ <div class="roomDescr">
+ <h1 id="room-title">Deluxe Room</h1>
+  <h2 id="roomprice">$129 / 24hrs</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam molestiae unde obcaecati mollitia iste blanditiis excepturi delectus, distinctio perspiciatis numquam, nostrum tenetur illo quia minus sunt amet sequi culpa commodi.</p>
+  <button id="booking">Book Now &raquo;</button>
+ </div>
+</div>
+
+<div class="bookRoom">
+  <img  src="./family room 4.jpeg" alt="deluxe room" >
+ <div class="roomDescr">
+ <h1 id="room-title">Family Room</h1>
+  <h2 id="roomprice">$129 / 24hrs</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam molestiae unde obcaecati mollitia iste blanditiis excepturi delectus, distinctio perspiciatis numquam, nostrum tenetur illo quia minus sunt amet sequi culpa commodi.</p>
+  <button id="booking">Book Now &raquo;</button>
+ </div>
+</div>
+
+<div class="bookRoom">
+  <img  src="./single rooms.jpeg" alt="deluxe room" >
+ <div class="roomDescr">
+ <h1 id="room-title">single Room</h1>
+  <h2 id="roomprice">$129 / 24hrs</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam molestiae unde obcaecati mollitia iste blanditiis excepturi delectus, distinctio perspiciatis numquam, nostrum tenetur illo quia minus sunt amet sequi culpa commodi.</p>
+  <button id="booking">Book Now &raquo;</button>
+ </div>
+</div>
+
+<div class="bookRoom">
+  <img  src="./deluxe room 7.jpeg" alt="deluxe room" >
+ <div class="roomDescr">
+ <h1 id="room-title">Deluxe Room</h1>
+  <h2 id="roomprice">$129 / 24hrs</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam molestiae unde obcaecati mollitia iste blanditiis excepturi delectus, distinctio perspiciatis numquam, nostrum tenetur illo quia minus sunt amet sequi culpa commodi.</p>
+  <button id="booking">Book Now &raquo;</button>
+ </div>
+</div>
+
+<div class="bookRoom">
+  <img  src="./double room.jpeg" alt="deluxe room" >
+ <div class="roomDescr">
+ <h1 id="room-title">Double Room</h1>
+  <h2 id="roomprice">$129 / 24hrs</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam molestiae unde obcaecati mollitia iste blanditiis excepturi delectus, distinctio perspiciatis numquam, nostrum tenetur illo quia minus sunt amet sequi culpa commodi.</p>
+  <button id="booking">Book Now &raquo;</button>
+ </div>
+</div>
+
+</div>
+</section>
 </body>
 </html>

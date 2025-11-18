@@ -1,13 +1,21 @@
+// function showGreeting() {
+//   const demo = document.getElementById('greetings');
+//   if (!demo) return; // nothing to do if the target element is missing
 
-function closeModal(){
-  return document.getElementById("signUp").style.display="none";
-}
-  document.getElementById("myBtn").addEventListener("click",closeModal() );
-var modal = document.getElementById('id01');
+//   const hour = new Date().getHours();
+//   let greeting = 'Welcome';
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+//   if (hour >= 5 && hour < 12) {
+//     greeting = 'Good Morning';
+//   } else if (hour >= 12 && hour < 18) {
+//     greeting = 'Good Afternoon';
+//   } else if (hour >= 18 && hour < 22) {
+//     greeting = 'Good Evening';
+//   } else {
+//     greeting = 'Good Night';
+//   }
+// }
+
+// Get the modal
+
+
