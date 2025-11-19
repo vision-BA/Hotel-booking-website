@@ -76,6 +76,19 @@ body{
 #header1 input[type=search]:focus + .search-icon {
   color: #fff;
 }
+#header1 nav  #signUp,#header1 nav  #login {
+ background-color: #063c08;
+color: #ddd;
+border: none;
+width: 100px;
+padding: 10px;
+height: 40px;
+margin: auto 10px;
+cursor: pointer;
+}
+#header1 nav  #signUp:hover,#header1 nav  #login:hover{
+  background-color: #120be2;
+}
 /*small devices responsiveness */
 @media screen and (max-width: 600px){
     #header1{
@@ -117,7 +130,10 @@ body{
         width: 100%;
         box-sizing: border-box;
     }
-
+#header1 nav  #signUp,#header1 nav  #login {
+  width: 100%;
+  margin: 10px auto;
+}
   section.homepage{
   background-image: url("./deluxe\ room.jpeg");
   background-repeat: no-repeat;
@@ -126,16 +142,24 @@ body{
   width: 100%;
   height: 30vh;
 }
+section.homepage{
+   width: 100%;
+  height: 100px;
+
+}
 }
 
 /* styling the homepage section with background image and button inside */
 section.homepage{
-  background-image: url("./deluxe\ room.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+ background-color: #8dcc8f;
   width: 100%;
-  height: 70vh;
+  height: 60vh;
+  
+}
+section.homepage p{
+  text-align: center;
+  transform: translateY(190px);
+  
 }
 section span.close{
   font-size: 2.5rem;
@@ -144,26 +168,12 @@ section span.close{
    cursor: pointer;
 
 }
-section #signUp,section #login{
-background-color: #4CAF50;
-color: #ddd;
-border: none;
-width: 200px;;
-padding: 12px;
-margin: 12px;
-position: relative;
-top: 50%;
-left: 50%;
-right: 50%;
-cursor: pointer;
-transform: translateX(-140%);
-}
-section #signUp:hover,section #login:hover{
-  background-color: #120be2;
-}
+
+
+
 
 form .container{
-  
+  transform: translateY(-75px);
   width: 25%;
   height: fit-content;
   margin: auto;

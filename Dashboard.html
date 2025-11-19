@@ -25,14 +25,17 @@
         <input type="search" name="search" id="search" placeholder="Search for rooms here ">
         <i class="fa fa-search search-icon"></i>
     </div>
-
+    <!--button to open modal sign up form-->
+  <button onclick="document.getElementById('id01').style.display='block'"  id="signUp">Sign Up</button>
+    <!--button to open modal login form-->
+<button onclick="document.getElementById('id02').style.display='block'" id="login">Login</button>
     </nav>
    </header> 
 
    <!--homepage sections with sign up, login (in modal form) and welcome message-->
-<section class="homepage">
-   <!--button to open modal sign up form-->
-<button onclick="document.getElementById('id01').style.display='block'"  id="signUp">Sign Up</button>
+<section class="homepage" style="margin-top: 0;">
+
+   <p id="greeting"></p>
 
 <div id="id01" class="modal" style="display: none;">
    <!--sign to close modal sign up form-->
@@ -59,8 +62,7 @@
   </form>
 </div>
 
-   <!--button to open modal login form-->
-<button onclick="document.getElementById('id02').style.display='block'" id="login">Login</button>
+ 
 <div id="id02" class="modal" style="display: none;">
   <form class="modal-content animate" action="https://www.w3schools.com/action_page.php" method="post">
    <!--sign to close modal login form-->
@@ -155,5 +157,8 @@
     <a href="#" style="text-decoration: none; font-size: 2.5em; color: #000000;">&raquo;</a>
   </div>
 </section>
+
+<p id="greeting"></p>
+<script src="script.js" defer></script>
 </body>
 </html>
