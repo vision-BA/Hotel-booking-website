@@ -134,19 +134,37 @@ cursor: pointer;
   width: 100%;
   margin: 10px auto;
 }
-  section.homepage{
-  background-image: url("./deluxe\ room.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 30vh;
 }
 section.homepage{
-   width: 100%;
-  height: 100px;
-
+  display: none;
 }
+section#Rooms {
+  margin: auto;
+}
+section#Rooms #roomCards{
+  display: block;
+  width: 100%;
+}
+section#Rooms  .bookRoom{
+  display: flex;
+  flex-direction: column;
+}
+section#Rooms img{
+  padding: 5px;
+}
+ .bookRoom .roomDescr{
+  margin: auto;
+  padding: 5px;
+ }
+  .bookRoom .roomDescr p{
+   margin: auto;
+  padding: 5px;
+  }
+  .bookRoom .roomDescr h1{
+    font-size: smaller;
+    margin: auto;
+    padding: 5px;
+  }
 }
 
 /* styling the homepage section with background image and button inside */
@@ -171,7 +189,7 @@ section span.close{
 
 
 
-
+/* form styling in large devices like desktop and Tvs */
 form .container{
   transform: translateY(-75px);
   width: 25%;
