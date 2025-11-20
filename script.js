@@ -35,5 +35,18 @@ window.onclick = function(event) {
   }
 }
 
-
+//handling user input which is not same for password in sign up for
+function validate(){
+var password1=document.getElementById('password').value
+var password2=document.getElementById('repeatPassword').value
+var errorText=document.getElementById('errorMessage');
+errorText.innerHTML=" ";
+try {
+  if(password1!==password2)  throw "password not matched";
+  if (password1&password2=="") throw "All field must be filled";
+}
+catch(err){
+  errorText.innerHTML= err;
+}
+}
 

@@ -287,10 +287,6 @@ section#Rooms img{
     padding: 12px;
 }
  #roomCards .bookRoom .roomDescr #booking {
-  position: absolute;
-  bottom: 0;
-  right: 100px;
-  transform: translateY(250px);
   background-color: #4CAF50;
   color: #f1f1f1;
   padding: 12px;
