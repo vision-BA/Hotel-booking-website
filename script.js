@@ -17,36 +17,48 @@ function showGreeting() {
  var welcome = document.getElementById('greeting');
 welcome.innerHTML=showGreeting() + " welcome to our hotel,Enjoy your special occassion here";
 
-var modal = document.getElementById('id01');
+// Modal helpers: open/close and keep the opposite trigger disabled while open
+const signUpBtn = document.getElementById('signUp');
+const loginBtn = document.getElementById('login');
+const modal1 = document.getElementById('id01');
+const modal2 = document.getElementById('id02');
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+function openModal(id){
+  const m = document.getElementById(id);
+  if(!m) return;
+  // show backdrop/modal as flex (CSS centers it)
+  m.style.display = 'flex';
+  // disable the other trigger button while modal is open
+  if(id === 'id01'){
+    if(loginBtn) loginBtn.disabled = true;
+  } else if(id === 'id02'){
+    if(signUpBtn) signUpBtn.disabled = true;
+  }
+  // focus first input inside modal for better UX
+  const firstInput = m.querySelector('input, button, textarea');
+  if(firstInput) firstInput.focus();
+}
+
+function closeModal(id){
+  const m = document.getElementById(id);
+  if(!m) return;
+  m.style.display = 'none';
+  if(id === 'id01'){
+    if(loginBtn) loginBtn.disabled = false;
+  } else if(id === 'id02'){
+    if(signUpBtn) signUpBtn.disabled = false;
   }
 }
 
-var modal = document.getElementById('id02');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+// clicking the backdrop should close the relevant modal via closeModal
+window.addEventListener('click', function (event) {
+  if (modal1 && event.target === modal1) {
+    closeModal('id01');
   }
-}
+  if (modal2 && event.target === modal2) {
+    closeModal('id02');
+  }
+});
 
-//handling user input which is not same for password in sign up for
-function validate(){
-var password1=document.getElementById('password').value
-var password2=document.getElementById('repeatPassword').value
-var errorText=document.getElementById('errorMessage');
-errorText.innerHTML=" ";
-try {
-  if(password1!==password2)  throw "password not matched";
-  if (password1&password2=="") throw "All field must be filled";
-}
-catch(err){
-  errorText.innerHTML= err;
-}
-}
+
 

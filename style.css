@@ -7,17 +7,20 @@
 }
 
 body{
-    margin: auto;
-   
+  margin: 0;
 }
 
 
 #header1{
-    background-color:#4CAF50 ;
-    padding: 10px 8px;
-    color: #ffffff;
-    height: 100px;
-}
+  background-color:#4CAF50 ;
+  padding: 10px 8px;
+  color: #ffffff;
+  height: 100px;
+  position: relative;
+  z-index: 1200; /* keep header above modal backdrop */
+  --header-height: 100px;
+  margin-bottom: 0;
+ }
  #header1 nav{
     display: flex;
 }
@@ -134,9 +137,13 @@ cursor: pointer;
   width: 100%;
   margin: 10px auto;
 }
+  section.homepage{
+  width: 100%;
+  height: 30vh;
 }
 section.homepage{
-  display: none;
+   width: 100%;
+  height: 100px;
 }
 section#Rooms {
   margin: auto;
@@ -168,16 +175,19 @@ section#Rooms img{
 }
 
 /* styling the homepage section with background image and button inside */
+/* make homepage the containing block for modals so backdrop only covers homepage */
 section.homepage{
  background-color: #8dcc8f;
-  width: 100%;
-  height: 60vh;
-  
+   width: 100%;
+   height: 60vh;
+   position: relative;
+   margin: 0; /* attach directly under header */
+   padding-top: 0;
 }
 section.homepage p{
   text-align: center;
-  transform: translateY(190px);
-  
+  transform: none; /* remove large translate so content sits tight under header */
+  padding-top: 18px;
 }
 section span.close{
   font-size: 2.5rem;
@@ -185,6 +195,84 @@ section span.close{
    color: #f1f1f1;
    cursor: pointer;
 
+}
+
+/* Modal/backdrop - ensure it covers the viewport so clicking outside closes it */
+.modal{
+  display: none; /* toggled inline/style by JS */
+  position: absolute; /* positioned relative to section.homepage */
+  z-index: 900; /* below header (header has 1200) */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Modal content box */
+.modal .modal-content{
+  background-color: #fefefe;
+  margin: auto;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 520px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  animation: modalFade 0.25s ease;
+  position: relative; /* allow absolute-positioned close button */
+  padding-top: 28px; /* leave room for the close button */
+}
+
+@keyframes modalFade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+.modal .close{
+  color: #000;
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+/* Restore form layout inside modal: make inner .container fill modal content
+   and remove the page-level small-width rule that caused a narrow column */
+.modal .modal-content .container{
+  transform: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 20px !important;
+  background: transparent !important; /* keep modal-content background as the visual box */
+  box-sizing: border-box;
+}
+
+/* Ensure inputs and buttons inside modal look correct */
+.modal .modal-content input[type=text],
+.modal .modal-content input[type=password],
+.modal .modal-content input[type=search]{
+  width: 100% !important;
+  padding: 10px !important;
+  margin: 8px 0 !important;
+  box-sizing: border-box;
+}
+.modal .modal-content .clearfix { display:flex; gap:12px; }
+/* make cancel/signup/login take 50% width each and align side-by-side */
+.modal .modal-content .clearfix button.cancelbtn,
+.modal .modal-content .clearfix button.signupbtn,
+.modal .modal-content .clearfix button.Login{
+  flex: 1 1 50%;
+  width: 50%;
+  float: none !important;
+  padding: 10px 18px !important;
+  box-sizing: border-box;
 }
 
 
