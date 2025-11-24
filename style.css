@@ -405,21 +405,40 @@ section#Rooms img{
 }
 
 section#Testmonials{
-  margin: 60px 80px; 
-  
-}
-section#Testmonials #testmonialsContainer{
-  display: flex;
+  margin: 40px 60px; 
 }
 
+section#Testmonials #testmonialsContainer{
+  position: relative;
+  margin: auto;
+
+}
+section#Testmonials #testmonialsContainer .prev{
+  font-weight: bolder;
+  position: absolute;
+  top: 40%;
+  cursor: pointer;
+  
+}
+section#Testmonials #testmonialsContainer .next{
+  position: absolute;
+  float: right;
+  text-align: right;
+  cursor: pointer;
+
+}
 section#Testmonials #testmonialsContainer .container{
-  display: inline-block;
+  background-color:#f1f1f1 ;
   margin: 20px;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
+  padding: 12px;
 }
 section#Testmonials #testmonialsContainer .container img{
   border-radius: 50%;
-  width: 150px;
+  height: 90px;
+  margin: auto 46%;
+
+}
+section#Testmonials #testmonialsContainer .container p,
+h2{
+  text-align: center;
 }
