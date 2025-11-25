@@ -357,7 +357,6 @@ button.cancelbtn, button.signupbtn,button.Login {
 
 section#Rooms{
 margin: 40px 60px;
-
 }
 section#Rooms #roomCards{
 display:inline-block;
