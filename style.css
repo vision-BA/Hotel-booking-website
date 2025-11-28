@@ -403,28 +403,40 @@ section#Rooms img{
   background-color: #f4d826;
 }
 
+
+
 section#Testmonials{
   margin: 40px 60px; 
 }
 
 section#Testmonials #testmonialsContainer{
   position: relative;
-  margin: auto;
-
+  margin: auto ;
 }
-section#Testmonials #testmonialsContainer .prev{
-  font-weight: bolder;
-  position: absolute;
-  top: 40%;
+ section#Testmonials #testmonialsContainer .prev,section#Testmonials #testmonialsContainer .next {
   cursor: pointer;
-  
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
 }
-section#Testmonials #testmonialsContainer .next{
-  position: absolute;
-  float: right;
-  text-align: right;
-  cursor: pointer;
 
+/* Position the "next button" to the right */
+section#Testmonials #testmonialsContainer .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
 }
 section#Testmonials #testmonialsContainer .container{
   background-color:#f1f1f1 ;
@@ -440,4 +452,14 @@ section#Testmonials #testmonialsContainer .container img{
 section#Testmonials #testmonialsContainer .container p,
 h2{
   text-align: center;
+}
+section#Testmonials #testmonialsContainer .dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
 }
