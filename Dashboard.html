@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Premium Hotel Booking - Luxury Accommodation in Mbeya</title>
     <!--links for external dependencies-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!--links fr external css file-->
@@ -14,10 +14,11 @@
 
    <header id="header1">
     <nav>
-    <ul>
+    <div class="nav-brand">Vision Hotel</div>
+    <ul id="navMenu" class="nav-menu">
         <li><a href="#Home">Home</a></li>
         <li><a href="#Rooms">Rooms</a></li>
-        <li><a href="#Testmonials">Testmonials</a></li>
+        <li><a href="#Testmonials">Testimonials</a></li>
         <li><a href="#Contact">Contact</a></li>
         <li><a href="#About">About</a></li>
 
@@ -27,10 +28,12 @@
         <input type="search" name="search" id="search" placeholder="Search for rooms here ">
         <i class="fa fa-search search-icon"></i>
     </div>
-    <!--button to open modal sign up form-->
-  <button onclick="openModal('id01')" id="signUp">Sign Up</button>
-    <!--button to open modal login form-->
-<button onclick="openModal('id02')" id="login">Login</button>
+    <!--hamburger menu for mobile-->
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     </nav>
    </header> 
 
@@ -38,6 +41,10 @@
 <section class="homepage" id="Home" style="margin-top: 0;">
 
    <p id="greeting"></p>
+   <div class="cta-buttons">
+     <button class="cta-primary" onclick="document.getElementById('Rooms').scrollIntoView({behavior: 'smooth'})">Explore Rooms</button>
+     <button class="cta-secondary" onclick="openModal('id02')">Login</button>
+   </div>
 
 <div id="id01" class="modal" style="display: none;">
    <!--sign to close modal sign up form-->
@@ -256,7 +263,7 @@
     <!-- Suggestion Form Section -->
     <div class="suggestion-form-container">
       <h3>Send Us Your Feedback</h3>
-      <form class="suggestion-form" action="" method="post">
+      <form class="suggestion-form" onsubmit="return validateContactForm()">
         <div class="form-group">
           <input type="text" id="name" name="name" placeholder="Your Name" required>
         </div>
@@ -366,7 +373,17 @@
       <p>To provide world-class hospitality and create memorable experiences for our guests while maintaining the highest standards of comfort, safety, and service excellence.</p>
     </div>
   </div>
+  
+  <!-- Footer Copyright -->
+  <div class="footer-copyright">
+    <p>&copy; 2025 Vision Hotel. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </div>
 </footer>
+
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" onclick="scrollToTop()" title="Go to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
 
 <script src="script.js" defer></script>
 </body>

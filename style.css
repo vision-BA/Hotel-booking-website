@@ -20,17 +20,31 @@ div {
   padding: 10px 8px;
   color: #ffffff;
   height: 100px;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1200; /* keep header above modal backdrop */
   --header-height: 100px;
   margin-bottom: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
  }
  #header1 nav{
     display: flex;
+    align-items: center;
+    gap: 20px;
 }
+
+.nav-brand {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  margin-right: 15px;
+  letter-spacing: 0.5px;
+}
+
   #header1  nav ul{
     display: flex;
-    margin: auto;
+    margin: 0;
+    flex: 1;
 }
   #header1  nav ul li{
     padding: 12px;
@@ -83,19 +97,6 @@ div {
 #header1 input[type=search]:focus + .search-icon {
   color: #fff;
 }
-#header1 nav  #signUp,#header1 nav  #login {
- background-color: #063c08;
-color: #ddd;
-border: none;
-width: 100px;
-padding: 10px;
-height: 40px;
-margin: auto 10px;
-cursor: pointer;
-}
-#header1 nav  #signUp:hover,#header1 nav  #login:hover{
-  background-color: #120be2;
-}
 /*small devices responsiveness */
 @media screen and (max-width: 600px){
     #header1{
@@ -137,10 +138,6 @@ cursor: pointer;
         width: 100%;
         box-sizing: border-box;
     }
-#header1 nav  #signUp,#header1 nav  #login {
-  width: 100%;
-  margin: 10px auto;
-}
   section.homepage{
   width: 100%;
   height: 30vh;
@@ -181,7 +178,7 @@ section#Rooms img{
 /* styling the homepage section with background image and button inside */
 /* make homepage the containing block for modals so backdrop only covers homepage */
 section.homepage{
- background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ background: linear-gradient(135deg, #1e90ff 0%, #00a8cc 100%);
  width: 100%;
  height: 60vh;
  position: relative;
@@ -202,6 +199,47 @@ section.homepage p{
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   max-width: 800px;
   line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.cta-primary, .cta-secondary {
+  padding: 14px 35px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-primary {
+  background: white;
+  color: #4CAF50;
+}
+
+.cta-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: #f0f0f0;
+}
+
+.cta-secondary {
+  background: #f4d826;
+  color: #333;
+}
+
+.cta-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: #e8cc00;
 }
 section span.close{
   font-size: 2.5rem;
@@ -387,12 +425,29 @@ section#Rooms  .bookRoom{
   background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
   border-radius: 12px;
   border: 2px solid #4CAF50;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
+  overflow: hidden;
 }
-section#Rooms  .bookRoom:hover{
-  transform: translateY(-5px);
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+
+section#Rooms  .bookRoom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(76, 175, 80, 0.1);
+  transition: left 0.3s ease;
+}
+
+section#Rooms  .bookRoom:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.4);
+}
+
+section#Rooms  .bookRoom:hover::before {
+  left: 100%;
 }
 .room-image-wrapper {
   position: relative;
@@ -768,12 +823,12 @@ section#Testmonials #testmonialsContainer .dot {
 }
 
 .about-mission {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e90ff 0%, #00a8cc 100%);
   color: white;
   padding: 40px;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 20px rgba(30, 144, 255, 0.3);
 }
 
 .about-mission h3 {
@@ -789,6 +844,31 @@ section#Testmonials #testmonialsContainer .dot {
   margin: 0;
   max-width: 800px;
   margin: 0 auto;
+}
+
+.footer-copyright {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+  border-top: 2px solid #4CAF50;
+}
+
+.footer-copyright p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.footer-copyright a {
+  color: #4CAF50;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-copyright a:hover {
+  color: #45a049;
+  text-decoration: underline;
 }
 
 /* Responsive Design for About Section */
@@ -824,7 +904,34 @@ section#Testmonials #testmonialsContainer .dot {
   }
 }
 
-/*styling contact section */
+/* Scroll to Top Button */
+#scrollTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+#scrollTopBtn:hover {
+  background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+#scrollTopBtn:active {
+  transform: translateY(-1px);
+}
 #Contact{
   margin: 60px 80px;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
