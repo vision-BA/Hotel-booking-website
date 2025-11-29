@@ -94,6 +94,136 @@
   </form>
 </div>
 
+<!-- Booking Modal - Multi-Step Form -->
+<div id="id03" class="modal" style="display: none;">
+  <span onclick="closeModal('id03')" class="close-booking" title="Close Modal">&times;</span>
+  <div class="booking-container">
+    <h2>Book Your Room</h2>
+    <p>Complete your booking in 3 easy steps</p>
+    
+    <!-- Step Indicator -->
+    <div class="booking-steps">
+      <div class="step active" id="step1-indicator">
+        <div class="step-number">1</div>
+        <div class="step-label">Your Details</div>
+      </div>
+      <div class="step" id="step2-indicator">
+        <div class="step-number">2</div>
+        <div class="step-label">Dates</div>
+      </div>
+      <div class="step" id="step3-indicator">
+        <div class="step-number">3</div>
+        <div class="step-label">Review</div>
+      </div>
+    </div>
+
+    <form class="booking-form" id="bookingForm">
+      <!-- Step 1: Personal Details -->
+      <div class="form-step active" id="step1">
+        <h3>Your Details</h3>
+        <div class="form-group">
+          <label for="fullName">Full Name <span class="required">*</span></label>
+          <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="bookingEmail">Email Address <span class="required">*</span></label>
+          <input type="email" id="bookingEmail" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+      </div>
+
+      <!-- Step 2: Dates & Guests -->
+      <div class="form-step" id="step2">
+        <h3>Dates & Guests</h3>
+        <div class="form-group">
+          <label for="checkIn">Check-In Date <span class="required">*</span></label>
+          <input type="date" id="checkIn" name="checkIn" required onchange="validateDates()">
+        </div>
+
+        <div class="form-group">
+          <label for="checkOut">Check-Out Date <span class="required">*</span></label>
+          <input type="date" id="checkOut" name="checkOut" required onchange="validateDates()">
+        </div>
+
+        <div class="form-group">
+          <label for="guests">Number of Guests <span class="required">*</span></label>
+          <select id="guests" name="guests" required>
+            <option value="">Select number of guests</option>
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5">5 Guests</option>
+            <option value="6">6 Guests</option>
+            <option value="7">7 Guests</option>
+            <option value="8">8 Guests</option>
+            <option value="9">9 Guests</option>
+            <option value="10">10 Guests</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Step 3: Review -->
+      <div class="form-step" id="step3">
+        <h3>Review Your Booking</h3>
+        <div class="review-box">
+          <div class="review-item">
+            <span class="review-label">Name:</span>
+            <span class="review-value" id="reviewName">-</span>
+          </div>
+          <div class="review-item">
+            <span class="review-label">Email:</span>
+            <span class="review-value" id="reviewEmail">-</span>
+          </div>
+          <div class="review-item">
+            <span class="review-label">Phone:</span>
+            <span class="review-value" id="reviewPhone">-</span>
+          </div>
+          <div class="review-item">
+            <span class="review-label">Check-In:</span>
+            <span class="review-value" id="reviewCheckIn">-</span>
+          </div>
+          <div class="review-item">
+            <span class="review-label">Check-Out:</span>
+            <span class="review-value" id="reviewCheckOut">-</span>
+          </div>
+          <div class="review-item">
+            <span class="review-label">Guests:</span>
+            <span class="review-value" id="reviewGuests">-</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="specialRequests">Special Requests (Optional)</label>
+          <textarea id="specialRequests" name="specialRequests" placeholder="Any special requests or requirements?" rows="3"></textarea>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div id="bookingError" class="booking-error" style="display: none;"></div>
+
+      <!-- Navigation Buttons -->
+      <div class="booking-buttons">
+        <button type="button" class="btn-secondary" id="prevBtn" onclick="changeStep(-1)" style="display: none;">
+          <i class="fas fa-chevron-left"></i> Previous
+        </button>
+        <button type="button" onclick="closeModal('id03')" class="btn-cancel">Cancel</button>
+        <button type="button" class="btn-primary" id="nextBtn" onclick="changeStep(1)">
+          Next <i class="fas fa-chevron-right"></i>
+        </button>
+        <button type="submit" class="bookbtn" id="submitBtn" style="display: none;">
+          <i class="fas fa-check"></i> Confirm Booking
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
 </section>
 
 <!--line to separate between homepage and room sections-->

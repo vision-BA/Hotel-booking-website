@@ -221,7 +221,278 @@ function scrollToTop() {
 }
 
 // ====================================
-// 5. CONTACT FORM VALIDATION
+// 5. BOOKING FORM - MULTI-STEP WIZARD
+// ====================================
+
+let currentStep = 1;
+const totalSteps = 3;
+
+/**
+ * Change booking form step
+ * @param {number} direction - 1 for next, -1 for previous
+ */
+function changeStep(direction) {
+  const errorDiv = document.getElementById('bookingError');
+  
+  // Validate current step before moving
+  if (direction === 1 && !validateStep(currentStep)) {
+    return;
+  }
+  
+  // Clear error on step change
+  errorDiv.style.display = 'none';
+  
+  // Update step
+  currentStep += direction;
+  
+  // Ensure we don't go beyond limits
+  if (currentStep < 1) currentStep = 1;
+  if (currentStep > totalSteps) currentStep = totalSteps;
+  
+  showStep(currentStep);
+}
+
+/**
+ * Display specific step of the booking form
+ * @param {number} step - Step number to display (1-3)
+ */
+function showStep(step) {
+  // Hide all steps
+  const steps = document.querySelectorAll('.form-step');
+  steps.forEach(s => s.classList.remove('active'));
+  
+  // Show current step
+  const currentStepDiv = document.getElementById(`step${step}`);
+  if (currentStepDiv) {
+    currentStepDiv.classList.add('active');
+  }
+  
+  // Update step indicators
+  const indicators = document.querySelectorAll('.step');
+  indicators.forEach((indicator, index) => {
+    indicator.classList.remove('active');
+    if (index < step) {
+      indicator.classList.add('completed');
+    }
+    if (index === step - 1) {
+      indicator.classList.add('active');
+    }
+  });
+  
+  // Update button visibility
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  if (prevBtn) prevBtn.style.display = step > 1 ? 'inline-block' : 'none';
+  if (nextBtn) nextBtn.style.display = step < totalSteps ? 'inline-block' : 'none';
+  if (submitBtn) submitBtn.style.display = step === totalSteps ? 'inline-block' : 'none';
+  
+  // Update review on step 3
+  if (step === totalSteps) {
+    updateReview();
+  }
+}
+
+/**
+ * Validate current step
+ * @param {number} step - Step to validate
+ * @returns {boolean} True if valid, false otherwise
+ */
+function validateStep(step) {
+  const errorDiv = document.getElementById('bookingError');
+  
+  if (step === 1) {
+    // Validate personal details
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('bookingEmail').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    
+    if (!fullName) {
+      showError('Please enter your full name');
+      return false;
+    }
+    
+    if (!email) {
+      showError('Please enter your email address');
+      return false;
+    }
+    
+    if (!validateEmail(email)) {
+      showError('Please enter a valid email address');
+      return false;
+    }
+    
+    if (!phone || phone.length < 10) {
+      showError('Please enter a valid phone number (at least 10 digits)');
+      return false;
+    }
+  } 
+  else if (step === 2) {
+    // Validate dates and guests
+    const checkIn = document.getElementById('checkIn').value;
+    const checkOut = document.getElementById('checkOut').value;
+    const guests = document.getElementById('guests').value;
+    
+    if (!checkIn) {
+      showError('Please select a check-in date');
+      return false;
+    }
+    
+    if (!checkOut) {
+      showError('Please select a check-out date');
+      return false;
+    }
+    
+    if (!guests) {
+      showError('Please select number of guests');
+      return false;
+    }
+    
+    // Validate dates
+    const checkInDate = new Date(checkIn);
+    const checkOutDate = new Date(checkOut);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    if (checkInDate < today) {
+      showError('Check-in date cannot be in the past');
+      return false;
+    }
+    
+    if (checkInDate >= checkOutDate) {
+      showError('Check-in date must be before check-out date');
+      return false;
+    }
+  }
+  
+  errorDiv.style.display = 'none';
+  return true;
+}
+
+/**
+ * Update review step with form data
+ */
+function updateReview() {
+  document.getElementById('reviewName').textContent = document.getElementById('fullName').value || '-';
+  document.getElementById('reviewEmail').textContent = document.getElementById('bookingEmail').value || '-';
+  document.getElementById('reviewPhone').textContent = document.getElementById('phone').value || '-';
+  
+  const checkInDate = document.getElementById('checkIn').value;
+  const checkOutDate = document.getElementById('checkOut').value;
+  
+  if (checkInDate) {
+    const date = new Date(checkInDate);
+    document.getElementById('reviewCheckIn').textContent = date.toLocaleDateString() || '-';
+  }
+  
+  if (checkOutDate) {
+    const date = new Date(checkOutDate);
+    document.getElementById('reviewCheckOut').textContent = date.toLocaleDateString() || '-';
+  }
+  
+  document.getElementById('reviewGuests').textContent = document.getElementById('guests').value || '-';
+}
+
+/**
+ * Show error message
+ * @param {string} message - Error message to display
+ */
+function showError(message) {
+  const errorDiv = document.getElementById('bookingError');
+  if (errorDiv) {
+    errorDiv.textContent = '❌ ' + message;
+    errorDiv.style.display = 'block';
+  }
+}
+
+/**
+ * Validate dates for real-time feedback
+ */
+function validateDates() {
+  const checkInInput = document.getElementById('checkIn');
+  const checkOutInput = document.getElementById('checkOut');
+  
+  if (!checkInInput || !checkOutInput) return;
+  
+  const checkInDate = new Date(checkInInput.value);
+  const checkOutDate = new Date(checkOutInput.value);
+  
+  if (checkInDate > checkOutDate && checkOutInput.value) {
+    showError('Check-in date cannot be after check-out date');
+    return false;
+  }
+  
+  document.getElementById('bookingError').style.display = 'none';
+  return true;
+}
+
+/**
+ * Submit booking form
+ * @param {Event} e - Form submit event
+ * @returns {boolean} False to prevent page reload
+ */
+function submitBooking(e) {
+  e.preventDefault();
+  
+  const fullName = document.getElementById('fullName').value.trim();
+  
+  // Final validation
+  if (validateStep(1) && validateStep(2)) {
+    alert(`Thank you, ${fullName}! Your booking request has been received. We will confirm your reservation shortly.`);
+    
+    // Reset form
+    document.getElementById('bookingForm').reset();
+    currentStep = 1;
+    showStep(1);
+    
+    closeModal('id03');
+  }
+  
+  return false;
+}
+
+/**
+ * Initialize booking form
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  // Add click handlers to all Book Now buttons
+  const bookingButtons = document.querySelectorAll('button[id="booking"]');
+  bookingButtons.forEach((button) => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentStep = 1;
+      showStep(1);
+      openModal('id03');
+      
+      const roomCard = this.closest('.bookRoom');
+      if (roomCard) {
+        const roomTitle = roomCard.querySelector('#room-title').textContent;
+        console.log('Booking:', roomTitle);
+      }
+    });
+  });
+
+  // Set minimum check-in date to today
+  const today = new Date().toISOString().split('T')[0];
+  const checkInInput = document.getElementById('checkIn');
+  const checkOutInput = document.getElementById('checkOut');
+  
+  if (checkInInput) checkInInput.min = today;
+  if (checkOutInput) checkOutInput.min = today;
+  
+  // Setup form submission
+  const bookingForm = document.getElementById('bookingForm');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', submitBooking);
+  }
+  
+  // Initialize first step
+  showStep(1);
+});
+
+// ====================================
+// 6. CONTACT FORM VALIDATION
 // ====================================
 
 /**
