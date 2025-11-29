@@ -10,6 +10,10 @@ body{
   margin: 0;
 }
 
+div {
+  cursor: pointer;
+}
+
 
 #header1{
   background-color:#4CAF50 ;
@@ -646,6 +650,178 @@ section#Testmonials #testmonialsContainer .dot {
   color: #4CAF50;
   font-weight: 600;
   font-size: 1.4rem;
+}
+
+/*styling About section */
+#About {
+  margin: 60px 80px;
+  background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+#About h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #1b2b65;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 50px;
+  margin-bottom: 50px;
+  align-items: start;
+}
+
+.about-text h3 {
+  font-size: 1.8rem;
+  color: #1b2b65;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  color: #555;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.feature-item {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #4CAF50;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  color: #4CAF50;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.feature-item h4 {
+  color: #1b2b65;
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.feature-item p {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.stat-box {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+  transform: scale(1.05);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 10px 0 0;
+  font-size: 0.95rem;
+}
+
+.about-mission {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.about-mission h3 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.about-mission p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive Design for About Section */
+@media screen and (max-width: 768px) {
+  #About {
+    margin: 30px 20px;
+    padding: 30px 20px;
+  }
+
+  #About h2 {
+    font-size: 2rem;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-box {
+    padding: 20px;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
 }
 
 /*styling contact section */
