@@ -607,8 +607,12 @@ section#Testmonials #testmonialsContainer .dot {
 }
 
 /*styling contact section */
-sectio#Contact{
-  background-color: #8b8b8b;
-  margin: 40px 60px;
-
+#Contact{
+ 
+  margin: 60px 80px;
+}
+#Contact .getInTouch{
+  background-color:#8b8b8b ;
+  padding: 20px;
+  height: fit-content;
 }
