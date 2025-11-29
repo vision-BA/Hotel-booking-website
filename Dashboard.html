@@ -35,7 +35,7 @@
    </header> 
 
    <!--homepage sections with sign up, login (in modal form) and welcome message-->
-<section class="homepage" style="margin-top: 0;">
+<section class="homepage" id="Home" style="margin-top: 0;">
 
    <p id="greeting"></p>
 
@@ -96,8 +96,12 @@
 <section id="Rooms">
   <!--class for all rooms -->
 <div id="roomCards">
+
 <div class="bookRoom">
-  <img  src="./deluxe room 2.jpeg" alt="deluxe room" >
+  <div class="room-image-wrapper">
+    <img src="./deluxe room 2.jpeg" alt="deluxe room">
+    <div class="room-stars">★★★★☆</div>
+  </div>
  <div class="roomDescr">
  <h1 id="room-title">Deluxe Room</h1>
   <h2 id="roomprice">125,000 TZS / 24hrs</h2>
@@ -107,7 +111,10 @@
 </div>
 
 <div class="bookRoom">
-  <img  src="./family room 4.jpeg" alt="deluxe room" >
+  <div class="room-image-wrapper">
+    <img src="./family room 4.jpeg" alt="family room">
+    <div class="room-stars">★★★★☆</div>
+  </div>
  <div class="roomDescr">
  <h1 id="room-title">Family Room</h1>
   <h2 id="roomprice">$129 / 24hrs</h2>
@@ -117,17 +124,23 @@
 </div>
 
 <div class="bookRoom">
-  <img  src="./single rooms.jpeg" alt="deluxe room" >
+  <div class="room-image-wrapper">
+    <img src="./single rooms.jpeg" alt="single room">
+    <div class="room-stars">★★★☆☆</div>
+  </div>
  <div class="roomDescr">
  <h1 id="room-title">Single Room</h1>
   <h2 id="roomprice">45,000 TZS / 24hrs</h2>
   <p><strong>Features:</strong> Single bed, Compact yet comfortable, Free WiFi, Energy-efficient AC, Shower room, Work desk area, Phone charging dock, 40" HD TV, Ideal for business travelers or solo guests, Budget-friendly rates.</p>
   <button id="booking">Book Now &raquo;</button>
- </div>
-</div>
+   </div>
+    </div>
 
 <div class="bookRoom">
-  <img  src="./family room 4.jpeg" alt="family room" >
+  <div class="room-image-wrapper">
+    <img src="./family room 4.jpeg" alt="family room">
+    <div class="room-stars">★★★★★</div>
+  </div>
  <div class="roomDescr">
  <h1 id="room-title">Family Room</h1>
   <h2 id="roomprice">85,000 TZS / 24hrs</h2>
@@ -137,7 +150,10 @@
 </div>
 
 <div class="bookRoom">
-  <img  src="./double room.jpeg" alt="double room" >
+  <div class="room-image-wrapper">
+    <img src="./double room.jpeg" alt="double room">
+    <div class="room-stars">★★★★☆</div>
+  </div>
  <div class="roomDescr">
  <h1 id="room-title">Double Room</h1>
   <h2 id="roomprice">65,000 TZS / 24hrs</h2>
@@ -208,11 +224,16 @@
 <div id="Contact">
   <h2 style="text-align: center; padding-top: 20px;">Contact Us</h2>
   <p style="text-align: center; padding-top: 20px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum culpa cupiditate ullam ut veniam fugiat velit, ipsa quas corporis eum repellat in quisquam ex fugit inventore, voluptas sequi consequatur aliquam.</p>
- <div class="getInTouch" ></div>
+ <i class="fa-solid fa-location-dot" style="padding: 12px;">Address:Mbeya-Tz</i> 
+ <div class="getInTouch" >
+ <div class="form">
+
+ </div>
+ </div>
 </div>
-<footer style="text-align: center; padding: 12px;">
+<!-- <footer style="text-align: center; padding: 12px;">
   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis vero perferendis expedita impedit tempora! Perspiciatis magni voluptates temporibus a numquam ipsum id. Quod quos accusantium ex ullam rerum impedit doloremque.</p>
-</footer>
+</footer> -->
 <script src="script.js" defer></script>
 </body>
 </html>

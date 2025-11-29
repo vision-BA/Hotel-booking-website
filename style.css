@@ -3,7 +3,7 @@
     box-sizing: border-box;
     margin: o;
     padding: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body{
@@ -177,17 +177,27 @@ section#Rooms img{
 /* styling the homepage section with background image and button inside */
 /* make homepage the containing block for modals so backdrop only covers homepage */
 section.homepage{
- background-color: #8dcc8f;
-   width: 100%;
-   height: 60vh;
-   position: relative;
-   margin: 0; /* attach directly under header */
-   padding-top: 0;
+ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ width: 100%;
+ height: 60vh;
+ position: relative;
+ margin: 0; /* attach directly under header */
+ padding-top: 0;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
 }
 section.homepage p{
   text-align: center;
   transform: none; /* remove large translate so content sits tight under header */
   padding-top: 18px;
+  font-size: 2rem;
+  color: white;
+  font-weight: 300;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  max-width: 800px;
+  line-height: 1.6;
 }
 section span.close{
   font-size: 2.5rem;
@@ -357,6 +367,9 @@ button.cancelbtn, button.signupbtn,button.Login {
 
 section#Rooms{
 margin: 40px 60px;
+background-color: #f8f9fa;
+padding: 40px;
+border-radius: 12px;
 }
 section#Rooms #roomCards{
 display:inline-block;
@@ -367,12 +380,56 @@ section#Rooms  .bookRoom{
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);    
   margin:12px auto;
   padding: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+  border-radius: 12px;
+  border: 2px solid #4CAF50;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+section#Rooms  .bookRoom:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+}
+.room-image-wrapper {
+  position: relative;
+  display: inline-block;
 }
 section#Rooms img{
   max-width: 400px;
   height:fit-content;
   object-fit: contain;
   padding: 12px;
+  border-radius: 8px;
+}
+.room-stars {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #FFD700;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  color: #FFA500;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+#roomCards .bookRoom .roomDescr #booking {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: #f1f1f1;
+  padding: 12px 24px;
+  width: 200px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+#roomCards .bookRoom .roomDescr #booking:hover{
+  background: linear-gradient(135deg, #f4d826 0%, #d4b918 100%);
+  color: #333;
+  transform: scale(1.05);
 }
  .bookRoom .roomDescr{
   margin: 10px 20px ;
@@ -390,17 +447,6 @@ section#Rooms img{
  .bookRoom .roomDescr p{
     margin: 10px auto;
     padding: 12px;
-}
- #roomCards .bookRoom .roomDescr #booking {
-  background-color: #4CAF50;
-  color: #f1f1f1;
-  padding: 12px;
-  width: 200px;
-  border: none;
-  cursor: pointer;
-}
-#roomCards .bookRoom .roomDescr #booking:hover{
-  background-color: #f4d826;
 }
 
 
@@ -612,7 +658,7 @@ section#Testmonials #testmonialsContainer .dot {
   margin: 60px 80px;
 }
 #Contact .getInTouch{
-  background-color:#8b8b8b ;
+  background-color:#ececec ;
   padding: 20px;
   height: fit-content;
 }
