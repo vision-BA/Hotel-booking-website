@@ -60,9 +60,53 @@ window.addEventListener('click', function (event) {
   }
 });
 
-// displaying testimonial section if form of slides
-var slideIndex = 0;
-showSlides();
+// Testimonials carousel: auto-rotate and manual navigation
+let currentSlideIndex = 1;
+let carouselInterval;
+
+function changeSlide(n) {
+  clearInterval(carouselInterval); // stop auto-rotate on manual nav
+  showSlide(currentSlideIndex += n);
+  startAutoCarousel(); // restart auto-rotate
+}
+
+function currentSlide(n) {
+  clearInterval(carouselInterval);
+  showSlide(currentSlideIndex = n);
+  startAutoCarousel();
+}
+
+function showSlide(n) {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dots-container .dot');
+  
+  if (n > slides.length) { currentSlideIndex = 1; }
+  if (n < 1) { currentSlideIndex = slides.length; }
+  
+  slides.forEach(slide => slide.style.display = 'none');
+  dots.forEach(dot => dot.classList.remove('active'));
+  
+  if (slides[currentSlideIndex - 1]) {
+    slides[currentSlideIndex - 1].style.display = 'block';
+  }
+  if (dots[currentSlideIndex - 1]) {
+    dots[currentSlideIndex - 1].classList.add('active');
+  }
+}
+
+function autoSlide() {
+  showSlide(++currentSlideIndex);
+}
+
+function startAutoCarousel() {
+  carouselInterval = setInterval(autoSlide, 5000); // auto-rotate every 5 seconds
+}
+
+// Start carousel when page loads
+document.addEventListener('DOMContentLoaded', () => {
+  showSlide(currentSlideIndex);
+  startAutoCarousel();
+});
 
 function showSlides() {
   var i;
@@ -70,9 +114,4 @@ function showSlides() {
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
-  slides[slideIndex-1].style.display = "block";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
-

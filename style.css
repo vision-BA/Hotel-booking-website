@@ -463,3 +463,152 @@ section#Testmonials #testmonialsContainer .dot {
   display: inline-block;
   transition: background-color 0.6s ease;
 }
+
+.dot.active {
+  background-color: #4CAF50;
+}
+
+/* Testimonials carousel styles */
+#Testmonials {
+  padding: 60px 40px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+#Testmonials h2 {
+  color: #1b2b65;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#testmonialsContainer {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  flex: 1;
+}
+
+.slide {
+  display: none;
+  padding: 20px;
+  animation: fadeIn 0.6s;
+}
+
+.slide.fade {
+  animation: fadeIn 0.6s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.testimonial-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.testimonial-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid #4CAF50;
+}
+
+.testimonial-card h3 {
+  color: #1b2b65;
+  margin: 15px 0 10px;
+  font-size: 1.3rem;
+}
+
+.testimonial-card p {
+  color: #555;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 15px 0;
+}
+
+.rating {
+  color: #FFD700;
+  font-size: 1.2rem;
+  margin-top: 12px;
+}
+
+.carousel-wrapper button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  font-size: 28px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.carousel-wrapper button:hover {
+  background-color: #3d8b40;
+}
+
+.carousel-wrapper .prev {
+  order: -1;
+}
+
+.carousel-wrapper .next {
+  order: 3;
+}
+
+.dots-container {
+  text-align: center;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dots-container .dot {
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dots-container .dot.active {
+  background-color: #4CAF50;
+}
+
+.dots-container .dot:hover {
+  background-color: #999;
+}
+
+/* Price styling with TZS currency */
+#roomprice {
+  color: #4CAF50;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+/*styling contact section */
+sectio#Contact{
+  background-color: #8b8b8b;
+  margin: 40px 60px;
+
+}
