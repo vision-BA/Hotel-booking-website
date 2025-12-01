@@ -69,12 +69,6 @@ if (welcome) {
 // ====================================
 
 /**
- * Get modal elements
- */
-const modal1 = document.getElementById('id01'); // Sign Up modal
-const modal2 = document.getElementById('id02'); // Login modal
-
-/**
  * Open modal dialog with smooth display
  * @param {string} id - Modal element ID
  */
@@ -102,14 +96,11 @@ function closeModal(id) {
 }
 
 /**
- * Close modal when clicking outside (backdrop)
+ * Close modals when clicking outside (backdrop)
  */
-window.addEventListener('click', function (event) {
-  if (modal1 && event.target === modal1) {
-    closeModal('id01');
-  }
-  if (modal2 && event.target === modal2) {
-    closeModal('id02');
+window.addEventListener('click', function(event) {
+  if (event.target.classList && event.target.classList.contains('modal')) {
+    event.target.style.display = 'none';
   }
 });
 
@@ -189,6 +180,34 @@ function startAutoCarousel() {
 document.addEventListener('DOMContentLoaded', () => {
   showSlide(currentSlideIndex);
   startAutoCarousel();
+  
+  // Add click handlers to all Book Now buttons
+  const bookingButtons = document.querySelectorAll('button[id="booking"]');
+  bookingButtons.forEach((button) => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentStep = 1;
+      showStep(1);
+      openModal('id03');
+    });
+  });
+
+  // Set minimum check-in date to today
+  const today = new Date().toISOString().split('T')[0];
+  const checkInInput = document.getElementById('checkIn');
+  const checkOutInput = document.getElementById('checkOut');
+  
+  if (checkInInput) checkInInput.min = today;
+  if (checkOutInput) checkOutInput.min = today;
+  
+  // Setup form submission
+  const bookingForm = document.getElementById('bookingForm');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', submitBooking);
+  }
+  
+  // Initialize booking form first step
+  showStep(1);
 });
 
 // ====================================
@@ -428,6 +447,16 @@ function validateDates() {
 }
 
 /**
+ * Validate email format using regex
+ * @param {string} email - Email address to validate
+ * @returns {boolean} True if valid email format, false otherwise
+ */
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
+/**
  * Submit booking form
  * @param {Event} e - Form submit event
  * @returns {boolean} False to prevent page reload
@@ -456,98 +485,17 @@ function submitBooking(e) {
  * Initialize booking form
  */
 document.addEventListener('DOMContentLoaded', function() {
-  // Add click handlers to all Book Now buttons
-  const bookingButtons = document.querySelectorAll('button[id="booking"]');
-  bookingButtons.forEach((button) => {
-    button.addEventListener('click', function(e) {
+  // Add smooth scroll to all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      currentStep = 1;
-      showStep(1);
-      openModal('id03');
-      
-      const roomCard = this.closest('.bookRoom');
-      if (roomCard) {
-        const roomTitle = roomCard.querySelector('#room-title').textContent;
-        console.log('Booking:', roomTitle);
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
       }
     });
-  });
-
-  // Set minimum check-in date to today
-  const today = new Date().toISOString().split('T')[0];
-  const checkInInput = document.getElementById('checkIn');
-  const checkOutInput = document.getElementById('checkOut');
-  
-  if (checkInInput) checkInInput.min = today;
-  if (checkOutInput) checkOutInput.min = today;
-  
-  // Setup form submission
-  const bookingForm = document.getElementById('bookingForm');
-  if (bookingForm) {
-    bookingForm.addEventListener('submit', submitBooking);
-  }
-  
-  // Initialize first step
-  showStep(1);
-});
-
-// ====================================
-// 6. CONTACT FORM VALIDATION
-// ====================================
-
-/**
- * Validate and submit contact form
- * @returns {boolean} True if validation passes, false otherwise
- */
-function validateContactForm() {
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const subject = document.getElementById('subject').value.trim();
-  const message = document.getElementById('message').value.trim();
-
-  // Check if all fields are filled
-  if (!name || !email || !subject || !message) {
-    alert('Please fill in all fields');
-    return false;
-  }
-
-  // Validate email format
-  if (!validateEmail(email)) {
-    alert('Please enter a valid email address');
-    return false;
-  }
-
-  // Show success message
-  alert('Thank you for your message! We will get back to you soon.');
-  return true;
-}
-
-/**
- * Validate email format using regex
- * @param {string} email - Email address to validate
- * @returns {boolean} True if valid email format, false otherwise
- */
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
-
-// ====================================
-// 6. SMOOTH SCROLL NAVIGATION
-// ====================================
-
-/**
- * Add smooth scroll behavior to all anchor links
- */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
   });
 });
