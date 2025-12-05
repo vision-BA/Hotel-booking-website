@@ -456,26 +456,246 @@ function validateEmail(email) {
   return re.test(email);
 }
 
+// ====================================
+// 6. EMAIL FUNCTIONALITY - EMAILJS
+// ====================================
+
+/**
+ * ============================================
+ * EMAILJS CONFIGURATION
+ * ============================================
+ * 
+ * IMPORTANT: You need to configure these values before emails will work!
+ * 
+ * Step 1: Sign up at https://www.emailjs.com/ (free account available)
+ * Step 2: Get your credentials from https://dashboard.emailjs.com/admin
+ * Step 3: Replace the values below with your actual credentials
+ * Step 4: See EMAILJS_SETUP.md for detailed setup instructions
+ * 
+ * ============================================
+ */
+
+const EMAILJS_CONFIG = {
+  // Your EmailJS Public Key (found in Account → General → API Keys)
+  PUBLIC_KEY: 'YOUR_PUBLIC_KEY',
+  
+  // Your EmailJS Service ID (found in Email Services section)
+  SERVICE_ID: 'YOUR_SERVICE_ID',
+  
+  // Your EmailJS Template ID (found in Email Templates section)
+  TEMPLATE_ID: 'YOUR_TEMPLATE_ID',
+  
+  // Check if configuration is complete
+  isConfigured: function() {
+    return this.PUBLIC_KEY !== 'YOUR_PUBLIC_KEY' && 
+           this.SERVICE_ID !== 'YOUR_SERVICE_ID' && 
+           this.TEMPLATE_ID !== 'YOUR_TEMPLATE_ID';
+  }
+};
+
+let emailjsInitialized = false;
+
+/**
+ * Initialize EmailJS
+ * Note: Replace these values with your actual EmailJS credentials
+ * Get them from: https://dashboard.emailjs.com/admin
+ */
+function initializeEmailJS() {
+  if (typeof emailjs !== 'undefined' && !emailjsInitialized) {
+    // Check if configuration is complete
+    if (!EMAILJS_CONFIG.isConfigured()) {
+      console.warn('⚠️ EmailJS is not configured yet. Please set up your credentials in script.js (EMAILJS_CONFIG section).');
+      console.warn('📖 See EMAILJS_SETUP.md for setup instructions.');
+      return;
+    }
+    
+    // Initialize EmailJS with your Public Key
+    emailjs.init({
+      publicKey: EMAILJS_CONFIG.PUBLIC_KEY,
+    });
+    emailjsInitialized = true;
+    console.log('✅ EmailJS initialized successfully');
+  }
+}
+
+// Initialize EmailJS when DOM is loaded
+if (typeof emailjs !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', initializeEmailJS);
+}
+
+/**
+ * Calculate number of nights between check-in and check-out
+ * @param {string} checkIn - Check-in date string
+ * @param {string} checkOut - Check-out date string
+ * @returns {number} Number of nights
+ */
+function calculateNights(checkIn, checkOut) {
+  const checkInDate = new Date(checkIn);
+  const checkOutDate = new Date(checkOut);
+  const diffTime = Math.abs(checkOutDate - checkInDate);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  return diffDays;
+}
+
+/**
+ * Format date for email display
+ * @param {string} dateString - Date string to format
+ * @returns {string} Formatted date string
+ */
+function formatDateForEmail(dateString) {
+  if (!dateString) return '-';
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+}
+
+/**
+ * Send booking confirmation email to customer
+ * @param {Object} bookingData - Booking details object
+ * @returns {Promise} Email sending promise
+ */
+async function sendBookingEmail(bookingData) {
+  // Check if EmailJS is configured
+  if (!EMAILJS_CONFIG.isConfigured()) {
+    return { 
+      success: false, 
+      error: { 
+        text: 'EmailJS is not configured. Please set up your credentials in script.js' 
+      } 
+    };
+  }
+  
+  // Prepare email template parameters
+  const templateParams = {
+    to_email: bookingData.email, // Customer's email
+    customer_name: bookingData.fullName,
+    customer_email: bookingData.email,
+    customer_phone: bookingData.phone,
+    check_in_date: formatDateForEmail(bookingData.checkIn),
+    check_out_date: formatDateForEmail(bookingData.checkOut),
+    number_of_guests: bookingData.guests,
+    number_of_nights: calculateNights(bookingData.checkIn, bookingData.checkOut),
+    special_requests: bookingData.specialRequests || 'None',
+    booking_date: new Date().toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+  };
+  
+  try {
+    // Send email using EmailJS
+    const response = await emailjs.send(
+      EMAILJS_CONFIG.SERVICE_ID, 
+      EMAILJS_CONFIG.TEMPLATE_ID, 
+      templateParams
+    );
+    return { success: true, response };
+  } catch (error) {
+    console.error('EmailJS Error:', error);
+    return { success: false, error };
+  }
+}
+
 /**
  * Submit booking form
  * @param {Event} e - Form submit event
  * @returns {boolean} False to prevent page reload
  */
-function submitBooking(e) {
+async function submitBooking(e) {
   e.preventDefault();
   
-  const fullName = document.getElementById('fullName').value.trim();
+  // Check if EmailJS is available
+  if (typeof emailjs === 'undefined') {
+    showError('Email service is not available. Please refresh the page and try again.');
+    return false;
+  }
+  
+  // Initialize EmailJS if not already done
+  if (!emailjsInitialized) {
+    initializeEmailJS();
+  }
   
   // Final validation
-  if (validateStep(1) && validateStep(2)) {
-    alert(`Thank you, ${fullName}! Your booking request has been received. We will confirm your reservation shortly.`);
+  if (!validateStep(1) || !validateStep(2)) {
+    return false;
+  }
+  
+  // Collect all booking details
+  const bookingData = {
+    fullName: document.getElementById('fullName').value.trim(),
+    email: document.getElementById('bookingEmail').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    checkIn: document.getElementById('checkIn').value,
+    checkOut: document.getElementById('checkOut').value,
+    guests: document.getElementById('guests').value,
+    specialRequests: document.getElementById('specialRequests').value.trim()
+  };
+  
+  // Show loading state
+  const submitBtn = document.getElementById('submitBtn');
+  const originalBtnText = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  
+  // Hide any previous errors
+  document.getElementById('bookingError').style.display = 'none';
+  
+  try {
+    // Send email with booking details
+    const emailResult = await sendBookingEmail(bookingData);
     
-    // Reset form
-    document.getElementById('bookingForm').reset();
-    currentStep = 1;
-    showStep(1);
-    
-    closeModal('id03');
+    if (emailResult.success) {
+      // Success - show confirmation with email sent message
+      alert(`Thank you, ${bookingData.fullName}! Your booking request has been received and a confirmation email has been sent to ${bookingData.email}. We will confirm your reservation shortly.`);
+      
+      // Reset form
+      document.getElementById('bookingForm').reset();
+      currentStep = 1;
+      showStep(1);
+      
+      closeModal('id03');
+    } else {
+      // Email failed, but booking is still processed
+      console.error('Email sending failed:', emailResult.error);
+      
+      // Check if it's a configuration issue
+      const isConfigError = emailResult.error && 
+        emailResult.error.text && 
+        emailResult.error.text.includes('not configured');
+      
+      if (isConfigError) {
+        // EmailJS not configured - show standard booking success
+        alert(`Thank you, ${bookingData.fullName}! Your booking request has been received. We will confirm your reservation shortly via phone or email at ${bookingData.email}.`);
+      } else {
+        // Email sending failed for other reasons
+        alert(`Thank you, ${bookingData.fullName}! Your booking request has been received. However, there was an issue sending the confirmation email. Please note your booking details. We will contact you shortly at ${bookingData.email}.`);
+      }
+      
+      // Reset form
+      document.getElementById('bookingForm').reset();
+      currentStep = 1;
+      showStep(1);
+      
+      closeModal('id03');
+    }
+  } catch (error) {
+    console.error('Booking submission error:', error);
+    showError('An error occurred while processing your booking. Please try again.');
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtnText;
+  } finally {
+    // Restore button state if still visible
+    if (submitBtn.disabled) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnText;
+    }
   }
   
   return false;
