@@ -18,7 +18,9 @@ function toggleMenu() {
   
   if (navMenu && hamburger) {
     navMenu.classList.toggle('active');
+    //make it active when it is absense and vice versa is true
     hamburger.classList.toggle('active');
+    //make it active when it is absense and vice versa is true
   }
 }
 
